@@ -69,11 +69,18 @@ document.addEventListener("DOMContentLoaded", function() {
 
 document.addEventListener("DOMContentLoaded", function() {
     const noBtn = document.getElementById("no-btn");
+    const valentineMessage = document.getElementById("valentine-message");
+    const messageRect = valentineMessage.getBoundingClientRect();
+    const movementArea = {
+        minX: messageRect.left,
+        minY: messageRect.top,
+        maxX: messageRect.right - noBtn.offsetWidth,
+        maxY: messageRect.bottom - noBtn.offsetHeight
+    };
     
     noBtn.addEventListener("mouseenter", function() {
-        const buttonRect = noBtn.getBoundingClientRect();
-        const newX = Math.max(0, Math.min(window.innerWidth - buttonRect.width, Math.random() * (window.innerWidth - buttonRect.width)));
-        const newY = Math.max(0, Math.min(window.innerHeight - buttonRect.height, Math.random() * (window.innerHeight - buttonRect.height)));
+        const newX = Math.floor(Math.random() * (movementArea.maxX - movementArea.minX + 1)) + movementArea.minX;
+        const newY = Math.floor(Math.random() * (movementArea.maxY - movementArea.minY + 1)) + movementArea.minY;
         noBtn.style.transform = `translate(${newX}px, ${newY}px)`;
     });
 });
