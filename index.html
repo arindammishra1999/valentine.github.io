@@ -71,8 +71,9 @@ document.addEventListener("DOMContentLoaded", function() {
     const noBtn = document.getElementById("no-btn");
     
     noBtn.addEventListener("mouseenter", function() {
-        const newX = Math.floor(Math.random() * (window.innerWidth - 150));
-        const newY = Math.floor(Math.random() * (window.innerHeight - 50));
+        const buttonRect = noBtn.getBoundingClientRect();
+        const newX = Math.max(0, Math.min(window.innerWidth - buttonRect.width, Math.random() * (window.innerWidth - buttonRect.width)));
+        const newY = Math.max(0, Math.min(window.innerHeight - buttonRect.height, Math.random() * (window.innerHeight - buttonRect.height)));
         noBtn.style.transform = `translate(${newX}px, ${newY}px)`;
     });
 });
