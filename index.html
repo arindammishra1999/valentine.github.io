@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Will You Be My Valentine?</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+    }
+    
+    #valentine-message {
+        margin-top: 50px;
+        font-size: 24px;
+    }
+    
+    .button {
+        display: inline-block;
+        padding: 10px 20px;
+        margin: 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: transform 0.3s ease;
+    }
+    
+    #yes-btn {
+        background-color: #4CAF50;
+        color: white;
+    }
+    
+    #no-btn {
+        background-color: #f44336;
+        color: white;
+    }
+    
+    #heart-image {
+        display: none;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 9999;
+    }
+</style>
+</head>
+<body>
+    <div id="valentine-message">
+        <p>Will you be my Valentine?</p>
+        <button id="yes-btn" class="button">Yes</button>
+        <button id="no-btn" class="button">No</button>
+    </div>
+
+    <img id="heart-image" src="https://emojicdn.elk.sh/❤️" alt="Heart Emoji">
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const yesBtn = document.getElementById("yes-btn");
+    const heartImage = document.getElementById("heart-image");
+    
+    yesBtn.addEventListener("click", function() {
+        heartImage.style.display = "block";
+        setTimeout(function() {
+            heartImage.style.display = "none";
+        }, 3000); // Hide after 3 seconds (3000 milliseconds)
+    });
+});
+
+document.addEventListener("DOMContentLoaded", function() {
+    const noBtn = document.getElementById("no-btn");
+    
+    noBtn.addEventListener("mouseenter", function() {
+        const newX = Math.floor(Math.random() * (window.innerWidth - 150));
+        const newY = Math.floor(Math.random() * (window.innerHeight - 50));
+        noBtn.style.transform = `translate(${newX}px, ${newY}px)`;
+    });
+});
+
+</script>
+</body>
+</html>
